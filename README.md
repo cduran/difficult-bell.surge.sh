@@ -1,5 +1,9 @@
 # Difficult Bell - Modern Web Solutions
 
+[![Deploy to Surge.sh](https://github.com/cduran/difficult-bell.surge.sh/actions/workflows/deploy.yml/badge.svg)](https://github.com/cduran/difficult-bell.surge.sh/actions/workflows/deploy.yml)
+[![Website](https://img.shields.io/website?url=https%3A//difficult-bell.surge.sh)](https://difficult-bell.surge.sh)
+[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
+
 A beautiful, modern website built with the Lit framework and deployed on Surge.sh. This project showcases cutting-edge web development practices using Web Components, modern CSS, and optimal performance techniques.
 
 ## ✨ Features
@@ -90,6 +94,60 @@ cd dist
 surge
 ```
 
+### 🤖 Automated Deployment with GitHub Actions
+
+This project includes a GitHub Action that automatically deploys to Surge.sh when you push to the main branch.
+
+#### Setup GitHub Actions Deployment
+
+1. **Get your Surge token**
+   ```bash
+   # Login to surge (if not already logged in)
+   surge login
+   
+   # Get your token
+   surge token
+   ```
+
+2. **Add the token to GitHub Secrets**
+   - Go to your GitHub repository
+   - Navigate to `Settings` → `Secrets and variables` → `Actions`
+   - Click `New repository secret`
+   - Name: `SURGE_TOKEN`
+   - Value: Your surge token from step 1
+   - Click `Add secret`
+
+3. **The workflow will automatically:**
+   - ✅ Trigger on every push to main branch
+   - ✅ Install dependencies
+   - ✅ Build the project
+   - ✅ Deploy to difficult-bell.surge.sh
+   - ✅ Can also be triggered manually from GitHub Actions tab
+
+#### Manual Workflow Trigger
+You can also trigger the deployment manually:
+- Go to the `Actions` tab in your GitHub repository
+- Select the "Deploy to Surge.sh" workflow
+- Click `Run workflow`
+
+#### 🛠️ Deployment Helper Script
+For easier local development and setup, use the included helper script:
+
+```bash
+# Make the script executable (first time only)
+chmod +x scripts/deploy-helper.sh
+
+# Run the helper script
+./scripts/deploy-helper.sh
+```
+
+The script provides options to:
+- ✅ Check/Install Surge CLI
+- 🔑 Login to Surge.sh
+- 🎫 Get your Surge token for GitHub Actions
+- 🚀 Deploy locally
+- 📊 Check deployment status
+
 ## 🎨 Customization
 
 ### Theming
@@ -122,6 +180,10 @@ All components are located in `src/components/` and built using Lit framework:
 
 ```
 difficult-bell.surge.sh/
+├── .github/
+│   └── workflows/
+│       ├── deploy.yml           # Basic GitHub Action
+│       └── deploy-advanced.yml  # Advanced GitHub Action
 ├── src/
 │   ├── components/
 │   │   ├── main-app.js
@@ -130,12 +192,14 @@ difficult-bell.surge.sh/
 │   │   ├── contact-section.js
 │   │   └── footer-section.js
 │   └── main.js
-├── dist/                 # Build output
-├── index.html           # Main HTML file
-├── vite.config.js       # Vite configuration
-├── package.json         # Dependencies and scripts
-├── CNAME               # Surge.sh domain configuration
-└── README.md           # This file
+├── scripts/
+│   └── deploy-helper.sh    # Deployment helper script
+├── dist/                   # Build output
+├── index.html             # Main HTML file
+├── vite.config.js         # Vite configuration
+├── package.json           # Dependencies and scripts
+├── CNAME                  # Surge.sh domain configuration
+└── README.md              # This file
 ```
 
 ## 🔧 Development
