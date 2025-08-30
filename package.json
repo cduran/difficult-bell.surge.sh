@@ -1,0 +1,22 @@
+{
+  "name": "difficult-bell.surge.sh",
+  "version": "1.0.0",
+  "description": "Modern branded website built with Lit framework",
+  "license": "ISC",
+  "author": "Carlos Duran",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "npm run build && surge dist/ difficult-bell.surge.sh"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0",
+    "surge": "^0.23.0"
+  },
+  "dependencies": {
+    "lit": "^3.0.0"
+  }
+}
